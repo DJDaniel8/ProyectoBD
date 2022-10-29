@@ -1,0 +1,52 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+	  <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\Fonts\Roboto-Medium.ttf" />
+    <None Remove="Resources\Fonts\Roboto-Regular.ttf" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <COMReference Include="ORAOLEDBLib">
+      <WrapperTool>tlbimp</WrapperTool>
+      <VersionMinor>0</VersionMinor>
+      <VersionMajor>1</VersionMajor>
+      <Guid>0bb9afd1-51a1-11d2-bb7d-00c04fa30080</Guid>
+      <Lcid>0</Lcid>
+      <Isolated>false</Isolated>
+      <EmbedInteropTypes>true</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="ORAOLEDBOLAPLib">
+      <WrapperTool>tlbimp</WrapperTool>
+      <VersionMinor>0</VersionMinor>
+      <VersionMajor>1</VersionMajor>
+      <Guid>13dabbe3-4594-426b-a54a-7d1640f4a9a9</Guid>
+      <Lcid>0</Lcid>
+      <Isolated>false</Isolated>
+      <EmbedInteropTypes>true</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Oracle.ManagedDataAccess.Core" Version="3.21.80" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="HamburgerMenuControl">
+      <HintPath>..\..\..\Downloads\lateral bar\wpf-ui-workshops-master\HamburgerMenuControl\bin\Release\netcoreapp3.1\HamburgerMenuControl.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Fonts\Roboto-Medium.ttf" />
+    <Resource Include="Resources\Fonts\Roboto-Regular.ttf" />
+  </ItemGroup>
+
+</Project>

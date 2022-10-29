@@ -1,0 +1,74 @@
+﻿<UserControl x:Class="ProyectoBD.Views.FacturasViews.VerFacturasView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ProyectoBD.Views.FacturasViews"
+             xmlns:vm="clr-namespace:ProyectoBD.ViewModels.FacturasViewModels"
+             mc:Ignorable="d" 
+             d:DataContext="{d:DesignInstance Type=vm:VerFacturasViewModel}"
+             Visibility="{Binding ControlVisibility}"
+             d:DesignHeight="600" d:DesignWidth="1200">
+    <Grid>
+        <Grid Grid.Row="1">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0"
+                  Background="#323537">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Orientation="Horizontal"
+                                HorizontalAlignment="Left">
+                    <!--Controles adicionales del barmenu-->
+                </StackPanel>
+                <StackPanel Orientation="Horizontal"
+                                HorizontalAlignment="Right">
+                    <Button Style="{StaticResource NavigationBarButton2}" Height="40" Content="Crear" Command="{Binding CrearCommand}"
+                                Padding="12 0" Cursor="Hand" />
+                </StackPanel>
+            </Grid>
+
+            <DataGrid BorderBrush="#292C2E" ColumnHeaderHeight="30" Background="#E5E5E5" Margin="5" Grid.Row="1"
+                  AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="False"
+                  CanUserResizeRows="False" CanUserSortColumns="False" CanUserResizeColumns="False"
+                      ItemsSource="{Binding Facturas}" SelectedItem="{Binding SelectedFactura}">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Fecha" Width="*" HeaderStyle="{StaticResource GridHeaderStyle}"
+                                        IsReadOnly="True" Binding="{Binding Fecha, StringFormat=d, ConverterCulture= es-GT}"/>
+                    <DataGridTextColumn Header="No Doc" Width="*" HeaderStyle="{StaticResource GridHeaderStyle}"
+                                        IsReadOnly="True" Binding="{Binding NoDoc}"/>
+                    <DataGridTextColumn Header="NIT" Width="*" HeaderStyle="{StaticResource GridHeaderStyle}"
+                                        IsReadOnly="True" Binding="{Binding Nit}"/>
+                    <DataGridTextColumn Header="Residente" Width="2*" HeaderStyle="{StaticResource GridHeaderStyle}"
+                                        IsReadOnly="True" Binding="{Binding Residente.NombreDPI}"/>
+                    <DataGridTextColumn Header="Tipo pago" Width="*" HeaderStyle="{StaticResource GridHeaderStyle}"
+                                        IsReadOnly="True" Binding="{Binding Pago.TipoPago.Nombre}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+
+            <DataGrid BorderBrush="#292C2E" ColumnHeaderHeight="30" Background="#E5E5E5" Margin="5" Grid.Row="2"
+                  AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="False"
+                  CanUserResizeRows="False" CanUserSortColumns="False" CanUserResizeColumns="False"
+                      ItemsSource="{Binding Detalles}" >
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Cantidad" Width="*" HeaderStyle="{StaticResource GridHeaderStyle}"
+                                        IsReadOnly="True" Binding="{Binding Cantidad}"/>
+                    <DataGridTextColumn Header="Descripcion" Width="2*" HeaderStyle="{StaticResource GridHeaderStyle}"
+                                        IsReadOnly="True" Binding="{Binding Descripcion}"/>
+                    <DataGridTextColumn Header="Precio Unitario" Width="*" HeaderStyle="{StaticResource GridHeaderStyle}"
+                                        IsReadOnly="True" Binding="{Binding PrecioVenta, StringFormat=c, ConverterCulture=es-GT}"/>
+                    <DataGridTextColumn Header="Total" Width="*" HeaderStyle="{StaticResource GridHeaderStyle}"
+                                        IsReadOnly="True" Binding="{Binding Total, StringFormat=c, ConverterCulture=es-GT}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+    </Grid>
+</UserControl>
